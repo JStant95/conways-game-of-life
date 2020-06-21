@@ -1,0 +1,18 @@
+.Square1 {
+  height: 30px;
+  width: 30px;
+  background-color: #000;
+  display: inline-block;
+}
+
+.Square2 {
+  height: 30px;
+  width: 30px;
+  background-color: white;
+  display: inline-block;
+}
+
+.Grid {
+  position: relative;
+  top: -10px;
+}
