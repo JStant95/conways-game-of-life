@@ -5,29 +5,29 @@ class Game extends Component {
   state = {
     game: true,
     paused: true,
-    rows: [],
   };
 
   loadRows() {
-    for (let i = 1; i < 11; i++) {
-      this.state.rows.push(
+    const board = [];
+    for (let i = 1; i < 21; i++) {
+      board.push(
         <div>
           <Row key={i} num={i} />
         </div>
       );
+      console.log("wagwan");
     }
-    console.log("wagwan");
+
+    return board;
   }
   render() {
     {
-      {
-        this.loadRows();
-      }
+      console.log("yo");
     }
     return (
       <div>
         <h1>Conway's Game of Life</h1>
-        {this.state.rows}
+        {this.loadRows()}
       </div>
       /* <Row key={1} num={1} />
         <div></div>
