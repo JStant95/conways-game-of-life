@@ -5,20 +5,31 @@ class Game extends Component {
   state = {
     game: true,
     paused: true,
+    rows: [],
   };
 
   loadRows() {
-    let rows;
-    for (let i = 1; i < 21; i++) {
-      rows += <Row key={i} num={i} />;
+    for (let i = 1; i < 11; i++) {
+      this.state.rows.push(
+        <div>
+          <Row key={i} num={i} />
+        </div>
+      );
     }
-    return rows;
+    console.log("wagwan");
   }
   render() {
+    {
+      {
+        this.loadRows();
+      }
+    }
     return (
       <div>
         <h1>Conway's Game of Life</h1>
-        <Row key={1} num={1} />
+        {this.state.rows}
+      </div>
+      /* <Row key={1} num={1} />
         <div></div>
         <Row key={2} num={2} />
         <div></div>
@@ -56,8 +67,7 @@ class Game extends Component {
         <div></div>
         <Row key={19} num={19} />
         <div></div>
-        <Row key={20} num={20} />
-      </div>
+        <Row key={20} num={20} /> */
     );
   }
 }
