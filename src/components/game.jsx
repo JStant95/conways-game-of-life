@@ -4,12 +4,25 @@ import Row from "./row";
 class Game extends Component {
   state = {
     game: true,
-    paused: true,
+    timer: "",
   };
 
-  startTicks() {
-    let timerId = setInterval(() => console.log("tick"), 2000);
+  componentDidUpdate() {
+    if (this.state.stopped === false) {
+      this.timerId = setInterval(() => console.log("tick"), 2000);
+    } else {
+      clearInterval(this.timerId);
+      console.log("stopped");
+    }
   }
+
+  startTicks = () => {
+    this.setState({ stopped: false });
+  };
+
+  stopTicks = () => {
+    this.setState({ stopped: true });
+  };
 
   loadRows() {
     const board = [];
@@ -29,6 +42,7 @@ class Game extends Component {
         <h1>Conway's Game of Life</h1>
         {this.loadRows()}
         <button onClick={this.startTicks}>Start</button>
+        <button onClick={this.stopTicks}>Stop</button>
       </div>
     );
   }
