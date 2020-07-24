@@ -7,6 +7,10 @@ class Game extends Component {
     paused: true,
   };
 
+  startTicks() {
+    let timerId = setInterval(() => console.log("tick"), 2000);
+  }
+
   loadRows() {
     const board = [];
     for (let i = 1; i < 26; i++) {
@@ -24,6 +28,7 @@ class Game extends Component {
       <div>
         <h1>Conway's Game of Life</h1>
         {this.loadRows()}
+        <button onClick={this.startTicks}>Start</button>
       </div>
     );
   }
