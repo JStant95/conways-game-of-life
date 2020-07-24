@@ -9,7 +9,7 @@ class Game extends Component {
 
   loadRows() {
     const board = [];
-    for (let i = 1; i < 21; i++) {
+    for (let i = 1; i < 26; i++) {
       board.push(
         <div>
           <Row key={i} num={i} />
