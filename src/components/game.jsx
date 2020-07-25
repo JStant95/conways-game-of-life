@@ -1,31 +1,10 @@
 import React, { Component } from "react";
 import Row from "./row";
+import Ticks from "./ticks";
 
 class Game extends Component {
   state = {
     game: true,
-    timer: "",
-    stopped: true,
-  };
-
-  ticks = () => {
-    if (this.state.stopped === false) {
-      let timer = setInterval(() => console.log("Tick"), 2000);
-      this.setState({ timer: timer });
-    } else {
-      clearInterval(this.state.timer);
-      console.log("stopped");
-    }
-  };
-
-  startTicks = () => {
-    this.setState({ stopped: false });
-    this.ticks();
-  };
-
-  stopTicks = () => {
-    this.setState({ stopped: true });
-    this.ticks();
   };
 
   loadRows() {
@@ -45,8 +24,11 @@ class Game extends Component {
       <div>
         <h1>Conway's Game of Life</h1>
         {this.loadRows()}
-        <button onClick={this.startTicks}>Start</button>
-        <button onClick={this.stopTicks}>Stop</button>
+        <Ticks
+          stopTicks={this.stopTicks}
+          startTicks={this.startTicks}
+          stopped={this.state.stopped}
+        />
         <h2>Ticks: </h2>
       </div>
     );
