@@ -5,23 +5,27 @@ class Game extends Component {
   state = {
     game: true,
     timer: "",
+    stopped: true,
   };
 
-  componentDidUpdate() {
+  ticks = () => {
     if (this.state.stopped === false) {
-      this.timerId = setInterval(() => console.log("tick"), 2000);
+      let timer = setInterval(() => console.log("Tick"), 2000);
+      this.setState({ timer: timer });
     } else {
-      clearInterval(this.timerId);
+      clearInterval(this.state.timer);
       console.log("stopped");
     }
-  }
+  };
 
   startTicks = () => {
     this.setState({ stopped: false });
+    this.ticks();
   };
 
   stopTicks = () => {
     this.setState({ stopped: true });
+    this.ticks();
   };
 
   loadRows() {
@@ -43,6 +47,7 @@ class Game extends Component {
         {this.loadRows()}
         <button onClick={this.startTicks}>Start</button>
         <button onClick={this.stopTicks}>Stop</button>
+        <h2>Ticks: </h2>
       </div>
     );
   }
