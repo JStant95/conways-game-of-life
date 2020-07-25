@@ -14,6 +14,10 @@ class Game extends Component {
     this.setState({ ticks });
   };
 
+  resetTicks = () => {
+    this.setState({ ticks: 0 });
+  };
+
   loadRows() {
     const board = [];
     for (let i = 1; i < 26; i++) {
@@ -31,7 +35,11 @@ class Game extends Component {
       <div>
         <h1>Conway's Game of Life</h1>
         {this.loadRows()}
-        <Ticks key={1} incrementTicks={this.incrementTicks} />
+        <Ticks
+          key={1}
+          incrementTicks={this.incrementTicks}
+          resetTicks={this.resetTicks}
+        />
         <h2>Ticks: {this.state.ticks}</h2>
       </div>
     );

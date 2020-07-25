@@ -5,24 +5,15 @@ class Ticks extends Component {
     timer: "",
   };
 
-  ticks = () => {
-    if (this.state.stopped === false) {
-      let timerId = setInterval(() => this.props.incrementTicks(), 2000);
-      this.setState({ timer: timerId });
-    } else {
-      clearInterval(this.state.timer);
-      console.log("stopped");
-    }
-  };
-
   startTicks = () => {
-    this.setState({ stopped: false });
-    this.ticks();
+    clearInterval(this.state.timer);
+    let timerId = setInterval(() => this.props.incrementTicks(), 2000);
+    this.setState({ timer: timerId });
   };
 
   stopTicks = () => {
-    this.setState({ stopped: true });
-    this.ticks();
+    clearInterval(this.state.timer);
+    this.props.resetTicks();
   };
 
   render() {
