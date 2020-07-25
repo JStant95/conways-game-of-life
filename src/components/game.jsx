@@ -5,6 +5,13 @@ import Ticks from "./ticks";
 class Game extends Component {
   state = {
     game: true,
+    ticks: 0,
+  };
+
+  incrementTicks = () => {
+    let ticks = this.state.ticks;
+    ticks += 1;
+    this.setState({ ticks });
   };
 
   loadRows() {
@@ -24,12 +31,8 @@ class Game extends Component {
       <div>
         <h1>Conway's Game of Life</h1>
         {this.loadRows()}
-        <Ticks
-          stopTicks={this.stopTicks}
-          startTicks={this.startTicks}
-          stopped={this.state.stopped}
-        />
-        <h2>Ticks: </h2>
+        <Ticks key={1} incrementTicks={this.incrementTicks} />
+        <h2>Ticks: {this.state.ticks}</h2>
       </div>
     );
   }

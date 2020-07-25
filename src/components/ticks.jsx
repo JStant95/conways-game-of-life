@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 
 class Ticks extends Component {
-  state = {
-    timer: "",
-  };
+  state = {};
 
   componentDidUpdate() {
+    let timerId;
     if (this.state.stopped === false) {
-      this.timerId = setInterval(() => console.log("tick"), 2000);
+      timerId = setInterval(() => this.props.incrementTicks(), 2000);
     } else {
-      clearInterval(this.timerId);
+      clearInterval(timerId);
       console.log("stopped");
     }
   }
