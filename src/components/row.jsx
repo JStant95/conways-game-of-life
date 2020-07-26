@@ -7,44 +7,59 @@ class Row extends Component {
     this.state = {
       num: this.props.num,
       cells: [
-        { id: 1 },
-        { id: 2 },
-        { id: 3 },
-        { id: 4 },
-        { id: 5 },
-        { id: 6 },
-        { id: 7 },
-        { id: 8 },
-        { id: 9 },
-        { id: 10 },
-        { id: 11 },
-        { id: 12 },
-        { id: 13 },
-        { id: 14 },
-        { id: 15 },
-        { id: 16 },
-        { id: 17 },
-        { id: 18 },
-        { id: 19 },
-        { id: 20 },
-        { id: 21 },
-        { id: 22 },
-        { id: 23 },
-        { id: 24 },
-        { id: 25 },
-        { id: 26 },
-        { id: 27 },
-        { id: 28 },
-        { id: 29 },
-        { id: 30 },
+        { id: 1, alive: false },
+        { id: 2, alive: false },
+        { id: 3, alive: false },
+        { id: 4, alive: false },
+        { id: 5, alive: false },
+        { id: 6, alive: false },
+        { id: 7, alive: false },
+        { id: 8, alive: false },
+        { id: 9, alive: false },
+        { id: 10, alive: false },
+        { id: 11, alive: false },
+        { id: 12, alive: false },
+        { id: 13, alive: false },
+        { id: 14, alive: false },
+        { id: 15, alive: false },
+        { id: 16, alive: false },
+        { id: 17, alive: false },
+        { id: 18, alive: false },
+        { id: 19, alive: false },
+        { id: 20, alive: false },
+        { id: 21, alive: false },
+        { id: 22, alive: false },
+        { id: 23, alive: false },
+        { id: 24, alive: false },
+        { id: 25, alive: false },
+        { id: 26, alive: false },
+        { id: 27, alive: false },
+        { id: 28, alive: false },
+        { id: 29, alive: false },
+        { id: 30, alive: false },
       ],
     };
   }
+
+  handleCellClick = (cell) => {
+    console.log(cell);
+    // if (this.state.alive === false) {
+    //   this.setState({ alive: true });
+    // } else {
+    //   this.setState({ alive: false });
+    // }
+  };
+
   render() {
     return (
       <div>
         {this.state.cells.map((cell) => (
-          <Cell key={cell.id} num={cell.id} />
+          <Cell
+            key={cell.id}
+            id={cell.id}
+            alive={cell.alive}
+            onCellClick={this.handleCellClick}
+          />
         ))}
       </div>
     );
