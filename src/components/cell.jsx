@@ -3,7 +3,7 @@ import "../cell.css";
 
 class Cell extends Component {
   render() {
-    if (this.props.alive === true) {
+    if (this.props.cell.alive === true) {
       var colour = "Square2";
     } else {
       colour = "Square1";

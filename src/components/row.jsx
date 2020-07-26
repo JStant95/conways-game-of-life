@@ -44,18 +44,14 @@ class Row extends Component {
   handleCellClick = (cell) => {
     const cells = [...this.state.cells];
     const index = cells.indexOf(cell);
-    // cells[index] = { ...cell };
+    cells[index] = { ...cell };
     if (cells[index].alive === false) {
       cells[index].alive = true;
     } else {
       cells[index].alive = false;
     }
-    // this.setState({ cells });
-    // if (this.state.alive === false) {
-    //   this.setState({ alive: true });
-    // } else {
-    //   this.setState({ alive: false });
-    // }
+    console.log(cells);
+    this.setState({ cells });
   };
 
   render() {
