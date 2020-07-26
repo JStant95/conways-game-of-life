@@ -3,7 +3,6 @@ import "../cell.css";
 
 class Cell extends Component {
   render() {
-    console.log(this.props);
     if (this.props.alive === true) {
       var colour = "Square2";
     } else {
@@ -12,7 +11,7 @@ class Cell extends Component {
     return (
       <button
         className={colour}
-        onClick={() => this.props.onCellClick(this.props.id)}
+        onClick={() => this.props.onCellClick(this.props.cell)}
       ></button>
     );
   }

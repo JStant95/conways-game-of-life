@@ -42,7 +42,15 @@ class Row extends Component {
   }
 
   handleCellClick = (cell) => {
-    console.log(cell);
+    const cells = [...this.state.cells];
+    const index = cells.indexOf(cell);
+    // cells[index] = { ...cell };
+    if (cells[index].alive === false) {
+      cells[index].alive = true;
+    } else {
+      cells[index].alive = false;
+    }
+    // this.setState({ cells });
     // if (this.state.alive === false) {
     //   this.setState({ alive: true });
     // } else {
@@ -54,12 +62,7 @@ class Row extends Component {
     return (
       <div>
         {this.state.cells.map((cell) => (
-          <Cell
-            key={cell.id}
-            id={cell.id}
-            alive={cell.alive}
-            onCellClick={this.handleCellClick}
-          />
+          <Cell key={cell.id} cell={cell} onCellClick={this.handleCellClick} />
         ))}
       </div>
     );
