@@ -6,6 +6,7 @@ class Game extends Component {
   state = {
     game: true,
     ticks: 0,
+    grid: [],
   };
 
   incrementTicks = () => {
@@ -18,12 +19,21 @@ class Game extends Component {
     this.setState({ ticks: 0 });
   };
 
+  showCells = (data) => {
+    this.state.grid.push(data);
+  };
+
   loadRows() {
     const board = [];
     for (let i = 1; i < 26; i++) {
       board.push(
         <div>
-          <Row key={i} num={i} />
+          <Row
+            key={i}
+            num={i}
+            ticks={this.state.ticks}
+            showCells={this.showCells}
+          />
         </div>
       );
     }
@@ -31,6 +41,7 @@ class Game extends Component {
     return board;
   }
   render() {
+    console.log(this.state.grid);
     return (
       <div>
         <h1>Conway's Game of Life</h1>

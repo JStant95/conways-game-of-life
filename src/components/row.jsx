@@ -41,6 +41,12 @@ class Row extends Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.ticks != this.props.ticks) {
+      this.props.showCells(this.state.cells);
+    }
+  }
+
   handleCellClick = (cell) => {
     const cells = [...this.state.cells];
     const index = cells.indexOf(cell);
