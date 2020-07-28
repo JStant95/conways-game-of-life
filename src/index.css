@@ -1,4 +1,4 @@
-.box {
+.cell {
   display: inline-block;
   border: 1px solid black;
   width: 15px;
@@ -15,7 +15,7 @@
   background-color: green;
 }
 
-.box:hover {
+.cell:hover {
   background: #00ccff;
 }
 
@@ -32,3 +32,14 @@
   box-shadow: 0px 0px 20px white;
   margin-top: 20px;
 }
+
+/* h1,
+h2,
+h3,
+h4 {
+  color: white;
+  margin: auto;
+  text-align: center;
+  width: 50%;
+  margin-top: 10px;
+} */

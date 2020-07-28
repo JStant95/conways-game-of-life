@@ -1,18 +1,14 @@
 import React, { Component } from "react";
-import "../cell.css";
+import "../index.css";
 
 class Cell extends Component {
   render() {
-    if (this.props.cell.alive === true) {
-      var colour = "Square2";
-    } else {
-      colour = "Square1";
-    }
     return (
-      <button
-        className={colour}
+      <div
+        className={this.props.cellClass}
+        id={this.props.id}
         onClick={() => this.props.onCellClick(this.props.cell)}
-      ></button>
+      />
     );
   }
 }

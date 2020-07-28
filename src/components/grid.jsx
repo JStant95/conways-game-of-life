@@ -1,24 +1,25 @@
 import React, { Component } from "react";
+import Cell from "./cell";
+import "../index.css";
 
 class Grid extends Component {
   render() {
-    const width = this.props.cols * 14;
+    const width = this.props.cols * 16;
     var rowsArr = [];
 
-    var boxClass = "";
+    var cellClass = "";
     for (var i = 0; i < this.props.rows; i++) {
       for (var j = 0; j < this.props.cols; j++) {
-        let boxId = i + "_" + j;
+        let cellId = i + "_" + j;
 
-        boxClass = this.props.gridFull[i][j] ? "box on" : "box off";
+        cellClass = this.props.gridFull[i][j] ? "cell on" : "cell off";
         rowsArr.push(
-          <Box
-            boxClass={boxClass}
-            key={boxId}
-            boxId={boxId}
+          <Cell
+            cellClass={cellClass}
+            key={cellId}
+            cellId={cellId}
             row={i}
             col={j}
-            selectBox={this.props.selectBox}
           />
         );
       }
