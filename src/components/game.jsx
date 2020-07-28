@@ -28,9 +28,7 @@ class Game extends Component {
     this.setState({ ticks: 0 });
   };
 
-  showCells = (data) => {
-    this.state.grid.push(data);
-  };
+  handleCellClick = (cell) => {};
 
   render() {
     return (
@@ -40,6 +38,7 @@ class Game extends Component {
           gridFull={this.state.gridFull}
           rows={this.rows}
           cols={this.cols}
+          onCellClick={this.handleCellClick}
         />
         <Ticks
           key={1}
