@@ -1,13 +1,22 @@
 import React, { Component } from "react";
-import Row from "./row";
+import Grid from "./grid";
 import Ticks from "./ticks";
+import "../index.css";
 
 class Game extends Component {
-  state = {
-    game: true,
-    ticks: 0,
-    grid: [],
-  };
+  constructor() {
+    super();
+    this.rows = 30;
+    this.cols = 50;
+
+    this.state = {
+      game: true,
+      ticks: 0,
+      gridFull: Array(this.rows)
+        .fill()
+        .map(() => Array(this.cols).fill(false)),
+    };
+  }
 
   incrementTicks = () => {
     let ticks = this.state.ticks;
@@ -19,33 +28,24 @@ class Game extends Component {
     this.setState({ ticks: 0 });
   };
 
-  showCells = (data) => {
-    this.state.grid.push(data);
+  handleCellClick = (row, col) => {
+    let gridCopy = [...this.state.gridFull];
+    gridCopy[row][col] = !gridCopy[row][col];
+    this.setState({
+      gridFull: gridCopy,
+    });
   };
 
-  loadRows() {
-    const board = [];
-    for (let i = 1; i < 26; i++) {
-      board.push(
-        <div>
-          <Row
-            key={i}
-            num={i}
-            ticks={this.state.ticks}
-            showCells={this.showCells}
-          />
-        </div>
-      );
-    }
-
-    return board;
-  }
   render() {
-    console.log(this.state.grid);
     return (
       <div>
         <h1>Conway's Game of Life</h1>
-        {this.loadRows()}
+        <Grid
+          gridFull={this.state.gridFull}
+          rows={this.rows}
+          cols={this.cols}
+          onCellClick={this.handleCellClick}
+        />
         <Ticks
           key={1}
           incrementTicks={this.incrementTicks}
