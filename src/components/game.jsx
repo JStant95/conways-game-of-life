@@ -28,7 +28,13 @@ class Game extends Component {
     this.setState({ ticks: 0 });
   };
 
-  handleCellClick = (cell) => {};
+  handleCellClick = (row, col) => {
+    let gridCopy = [...this.state.gridFull];
+    gridCopy[row][col] = !gridCopy[row][col];
+    this.setState({
+      gridFull: gridCopy,
+    });
+  };
 
   render() {
     return (

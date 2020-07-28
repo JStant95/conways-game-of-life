@@ -20,6 +20,7 @@ class Grid extends Component {
             cellId={cellId}
             row={i}
             col={j}
+            onCellClick={this.props.onCellClick}
           />
         );
       }

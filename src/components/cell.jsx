@@ -7,7 +7,7 @@ class Cell extends Component {
       <div
         className={this.props.cellClass}
         id={this.props.id}
-        onClick={() => this.props.onCellClick(this.props.cell)}
+        onClick={() => this.props.onCellClick(this.props.row, this.props.col)}
       />
     );
   }
