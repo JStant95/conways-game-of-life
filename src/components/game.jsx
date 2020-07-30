@@ -18,6 +18,122 @@ class Game extends Component {
     };
   }
 
+  gameFlow() {
+    let cells = [...this.state.gridFull];
+    for (var i = 0; i < 30; i++) {
+      for (var j = 0; j < 50; j++) {
+        if (i === 0 && j === 0) {
+          let neighbours = [
+            cells[i + 1][j],
+            cells[i + 1][j + 1],
+            cells[i][j + 1],
+          ];
+          let liveNeighbours = neighbours.filter((cell) => cell === true)
+            .length;
+          this.deadOrAlive(i, j, liveNeighbours);
+        } else if (i === 29 && j === 0) {
+          let neighbours = [
+            cells[i - 1][j],
+            cells[i - 1][j + 1],
+            cells[i][j + 1],
+          ];
+          let liveNeighbours = neighbours.filter((cell) => cell === true)
+            .length;
+          this.deadOrAlive(i, j, liveNeighbours);
+        } else if (i === 0 && j === 49) {
+          let neighbours = [
+            cells[i + 1][j],
+            cells[i + 1][j - 1],
+            cells[i][j - 1],
+          ];
+          let liveNeighbours = neighbours.filter((cell) => cell === true)
+            .length;
+          this.deadOrAlive(i, j, liveNeighbours);
+        } else if (i === 29 && j === 49) {
+          let neighbours = [
+            cells[i - 1][j],
+            cells[i - 1][j - 1],
+            cells[i][j - 1],
+          ];
+          let liveNeighbours = neighbours.filter((cell) => cell === true)
+            .length;
+          this.deadOrAlive(i, j, liveNeighbours);
+        } else if (i === 0 && j > 0 && j < 49) {
+          let neighbours = [
+            cells[i][j - 1],
+            cells[i][j + 1],
+            cells[i + 1][j - 1],
+            cells[i + 1][j],
+            cells[i + 1][j + 1],
+          ];
+          let liveNeighbours = neighbours.filter((cell) => cell === true)
+            .length;
+          this.deadOrAlive(i, j, liveNeighbours);
+        } else if (i === 29 && j > 0 && j < 49) {
+          let neighbours = [
+            cells[i][j - 1],
+            cells[i][j + 1],
+            cells[i - 1][j - 1],
+            cells[i - 1][j],
+            cells[i - 1][j + 1],
+          ];
+          let liveNeighbours = neighbours.filter((cell) => cell === true)
+            .length;
+          this.deadOrAlive(i, j, liveNeighbours);
+        } else if (j === 49 && i > 0 && i < 29) {
+          let neighbours = [
+            cells[i + 1][j],
+            cells[i - 1][j],
+            cells[i][j - 1],
+            cells[i - 1][j - 1],
+            cells[i + 1][j - 1],
+          ];
+          let liveNeighbours = neighbours.filter((cell) => cell === true)
+            .length;
+          this.deadOrAlive(i, j, liveNeighbours);
+        } else {
+          let neighbours = [
+            cells[i + 1][j],
+            cells[i + 1][j + 1],
+            cells[i + 1][j - 1],
+            cells[i - 1][j + 1],
+            cells[i - 1][j],
+            cells[i - 1][j],
+            cells[i][j + 1],
+            cells[i][j - 1],
+          ];
+          let liveNeighbours = neighbours.filter((cell) => cell === true)
+            .length;
+          this.deadOrAlive(i, j, liveNeighbours);
+        }
+      }
+    }
+  }
+
+  deadOrAlive(row, column, liveNeighbours) {
+    let cells = [...this.state.gridFull];
+    let toBeChanged = [];
+    if (cells[row][column] === false) {
+      if (liveNeighbours === 3) {
+        console.log("Yo");
+        toBeChanged.push([row, column]);
+      }
+    } else {
+      if (liveNeighbours > 3 || liveNeighbours < 2) {
+        toBeChanged.push([row, column]);
+      }
+    }
+    this.changeIt(toBeChanged);
+  }
+
+  changeIt(toBeChanged) {
+    let cells = [...this.state.gridFull];
+    toBeChanged.forEach(
+      (num) => (cells[num[0]][num[1]] = !cells[num[0]][num[1]])
+    );
+    this.setState({ gridFull: cells });
+  }
+
   incrementTicks = () => {
     let ticks = this.state.ticks;
     ticks += 1;
