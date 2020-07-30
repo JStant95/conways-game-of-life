@@ -18,6 +18,12 @@ class Game extends Component {
     };
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.ticks !== this.state.ticks) {
+      this.gameFlow();
+    }
+  }
+
   gameFlow() {
     let cells = [...this.state.gridFull];
     for (var i = 0; i < 30; i++) {
@@ -91,6 +97,17 @@ class Game extends Component {
           let liveNeighbours = neighbours.filter((cell) => cell === true)
             .length;
           this.deadOrAlive(i, j, liveNeighbours);
+        } else if (j === 0 && i > 0 && i < 29) {
+          let neighbours = [
+            cells[i + 1][j],
+            cells[i - 1][j],
+            cells[i][j + 1],
+            cells[i - 1][j + 1],
+            cells[i + 1][j + 1],
+          ];
+          let liveNeighbours = neighbours.filter((cell) => cell === true)
+            .length;
+          this.deadOrAlive(i, j, liveNeighbours);
         } else {
           let neighbours = [
             cells[i + 1][j],
@@ -102,6 +119,8 @@ class Game extends Component {
             cells[i][j + 1],
             cells[i][j - 1],
           ];
+          console.log(i, j);
+          console.log(neighbours);
           let liveNeighbours = neighbours.filter((cell) => cell === true)
             .length;
           this.deadOrAlive(i, j, liveNeighbours);
