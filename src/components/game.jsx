@@ -8,6 +8,7 @@ class Game extends Component {
     super();
     this.rows = 30;
     this.cols = 50;
+    this.toBeChanged = [];
 
     this.state = {
       game: true,
@@ -26,6 +27,7 @@ class Game extends Component {
 
   gameFlow() {
     let cells = [...this.state.gridFull];
+    this.toBeChanged = [];
     for (var i = 0; i < 30; i++) {
       for (var j = 0; j < 50; j++) {
         if (i === 0 && j === 0) {
@@ -119,35 +121,31 @@ class Game extends Component {
             cells[i][j + 1],
             cells[i][j - 1],
           ];
-          console.log(i, j);
-          console.log(neighbours);
           let liveNeighbours = neighbours.filter((cell) => cell === true)
             .length;
           this.deadOrAlive(i, j, liveNeighbours);
         }
       }
     }
+    this.changeIt();
   }
 
   deadOrAlive(row, column, liveNeighbours) {
     let cells = [...this.state.gridFull];
-    let toBeChanged = [];
     if (cells[row][column] === false) {
       if (liveNeighbours === 3) {
-        console.log("Yo");
-        toBeChanged.push([row, column]);
+        this.toBeChanged.push([row, column]);
       }
     } else {
       if (liveNeighbours > 3 || liveNeighbours < 2) {
-        toBeChanged.push([row, column]);
+        this.toBeChanged.push([row, column]);
       }
     }
-    this.changeIt(toBeChanged);
   }
 
-  changeIt(toBeChanged) {
+  changeIt() {
     let cells = [...this.state.gridFull];
-    toBeChanged.forEach(
+    this.toBeChanged.forEach(
       (num) => (cells[num[0]][num[1]] = !cells[num[0]][num[1]])
     );
     this.setState({ gridFull: cells });
