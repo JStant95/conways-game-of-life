@@ -144,7 +144,6 @@ class Game extends Component {
   }
 
   changeIt() {
-    console.log(this.toBeChanged);
     let cells = [...this.state.gridFull];
     this.toBeChanged.forEach(
       (num) => (cells[num[0]][num[1]] = !cells[num[0]][num[1]])
