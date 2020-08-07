@@ -46,69 +46,32 @@ class Game extends Component {
             .length;
           this.deadOrAlive(i, j, liveNeighbours);
         } else if (i === 29 && j === 49) {
-          let neighbours = [
-            cells[i - 1][j],
-            cells[i - 1][j - 1],
-            cells[i][j - 1],
-          ];
+          let neighbours = this.findNeighbours(i, j);
           let liveNeighbours = neighbours.filter((cell) => cell === true)
             .length;
           this.deadOrAlive(i, j, liveNeighbours);
         } else if (i === 0 && j > 0 && j < 49) {
-          let neighbours = [
-            cells[i][j - 1],
-            cells[i][j + 1],
-            cells[i + 1][j - 1],
-            cells[i + 1][j],
-            cells[i + 1][j + 1],
-          ];
+          let neighbours = this.findNeighbours(i, j);
           let liveNeighbours = neighbours.filter((cell) => cell === true)
             .length;
           this.deadOrAlive(i, j, liveNeighbours);
         } else if (i === 29 && j > 0 && j < 49) {
-          let neighbours = [
-            cells[i][j - 1],
-            cells[i][j + 1],
-            cells[i - 1][j - 1],
-            cells[i - 1][j],
-            cells[i - 1][j + 1],
-          ];
+          let neighbours = this.findNeighbours(i, j);
           let liveNeighbours = neighbours.filter((cell) => cell === true)
             .length;
           this.deadOrAlive(i, j, liveNeighbours);
         } else if (j === 49 && i > 0 && i < 29) {
-          let neighbours = [
-            cells[i + 1][j],
-            cells[i - 1][j],
-            cells[i][j - 1],
-            cells[i - 1][j - 1],
-            cells[i + 1][j - 1],
-          ];
+          let neighbours = this.findNeighbours(i, j);
           let liveNeighbours = neighbours.filter((cell) => cell === true)
             .length;
           this.deadOrAlive(i, j, liveNeighbours);
         } else if (j === 0 && i > 0 && i < 29) {
-          let neighbours = [
-            cells[i + 1][j],
-            cells[i - 1][j],
-            cells[i][j + 1],
-            cells[i - 1][j + 1],
-            cells[i + 1][j + 1],
-          ];
+          let neighbours = this.findNeighbours(i, j);
           let liveNeighbours = neighbours.filter((cell) => cell === true)
             .length;
           this.deadOrAlive(i, j, liveNeighbours);
         } else {
-          let neighbours = [
-            cells[i + 1][j],
-            cells[i + 1][j + 1],
-            cells[i + 1][j - 1],
-            cells[i - 1][j + 1],
-            cells[i - 1][j],
-            cells[i - 1][j - 1],
-            cells[i][j + 1],
-            cells[i][j - 1],
-          ];
+          let neighbours = this.findNeighbours(i, j);
           let liveNeighbours = neighbours.filter((cell) => cell === true)
             .length;
           this.deadOrAlive(i, j, liveNeighbours);
@@ -136,6 +99,63 @@ class Game extends Component {
       return [
         cells[row + 1][column],
         cells[row + 1][column - 1],
+        cells[row][column - 1],
+      ];
+    } else if (row === 29 && column === 49) {
+      return [
+        cells[row - 1][column],
+        cells[row - 1][column - 1],
+        cells[row][column - 1],
+      ];
+    } else if (row === 0 && column > 0 && column < 49) {
+      return [
+        cells[row][column - 1],
+        cells[row][column + 1],
+        cells[row + 1][column - 1],
+        cells[row + 1][column],
+        cells[row + 1][column + 1],
+      ];
+    } else if (row === 29 && column > 0 && column < 49) {
+      return [
+        cells[row][column - 1],
+        cells[row][column + 1],
+        cells[row - 1][column - 1],
+        cells[row - 1][column],
+        cells[row - 1][column + 1],
+      ];
+    } else if (column === 49 && row > 0 && row < 29) {
+      return [
+        cells[row + 1][column],
+        cells[row - 1][column],
+        cells[row][column - 1],
+        cells[row - 1][column - 1],
+        cells[row + 1][column - 1],
+      ];
+    } else if (column === 0 && row > 0 && row < 29) {
+      return [
+        cells[row + 1][column],
+        cells[row - 1][column],
+        cells[row][column + 1],
+        cells[row - 1][column + 1],
+        cells[row + 1][column + 1],
+      ];
+    } else if (column === 0 && row > 0 && row < 29) {
+      return [
+        cells[row + 1][column],
+        cells[row - 1][column],
+        cells[row][column + 1],
+        cells[row - 1][column + 1],
+        cells[row + 1][column + 1],
+      ];
+    } else {
+      return [
+        cells[row + 1][column],
+        cells[row + 1][column + 1],
+        cells[row + 1][column - 1],
+        cells[row - 1][column + 1],
+        cells[row - 1][column],
+        cells[row - 1][column - 1],
+        cells[row][column + 1],
         cells[row][column - 1],
       ];
     }
