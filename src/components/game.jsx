@@ -31,29 +31,17 @@ class Game extends Component {
     for (var i = 0; i < 30; i++) {
       for (var j = 0; j < 50; j++) {
         if (i === 0 && j === 0) {
-          let neighbours = [
-            cells[i + 1][j],
-            cells[i + 1][j + 1],
-            cells[i][j + 1],
-          ];
+          let neighbours = this.findNeighbours(i, j);
           let liveNeighbours = neighbours.filter((cell) => cell === true)
             .length;
           this.deadOrAlive(i, j, liveNeighbours);
         } else if (i === 29 && j === 0) {
-          let neighbours = [
-            cells[i - 1][j],
-            cells[i - 1][j + 1],
-            cells[i][j + 1],
-          ];
+          let neighbours = this.findNeighbours(i, j);
           let liveNeighbours = neighbours.filter((cell) => cell === true)
             .length;
           this.deadOrAlive(i, j, liveNeighbours);
         } else if (i === 0 && j === 49) {
-          let neighbours = [
-            cells[i + 1][j],
-            cells[i + 1][j - 1],
-            cells[i][j - 1],
-          ];
+          let neighbours = this.findNeighbours(i, j);
           let liveNeighbours = neighbours.filter((cell) => cell === true)
             .length;
           this.deadOrAlive(i, j, liveNeighbours);
@@ -128,6 +116,29 @@ class Game extends Component {
       }
     }
     this.changeIt();
+  }
+
+  findNeighbours(row, column) {
+    let cells = [...this.state.gridFull];
+    if (row === 0 && column === 0) {
+      return [
+        cells[row + 1][column],
+        cells[row + 1][column + 1],
+        cells[row][column + 1],
+      ];
+    } else if (row === 29 && column === 0) {
+      return [
+        cells[row - 1][column],
+        cells[row - 1][column + 1],
+        cells[row][column + 1],
+      ];
+    } else if ((row = 0 && column === 49)) {
+      return [
+        cells[row + 1][column],
+        cells[row + 1][column - 1],
+        cells[row][column - 1],
+      ];
+    }
   }
 
   deadOrAlive(row, column, liveNeighbours) {
