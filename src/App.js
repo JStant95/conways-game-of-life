@@ -7,21 +7,23 @@ class App extends Component {
     speed: 1000,
   };
 
-  // handleChange = () => {
-  //   this.setState({ speed: event.target.value });
-  // };
+  handleChange = (event) => {
+    this.setState({ speed: event.target.value });
+  };
+
   render() {
+    console.log(this.state.speed);
     return (
       <div className="App">
-        <Game />
+        <Game speed={this.state.speed} />
         <label for="speed">Select Speed:</label>
 
         <select onChange={this.handleChange} name="speed" id="speed">
-          <option value="500">Slow</option>
+          <option value="2000">Slow</option>
           <option value="1000" selected="selected">
             Medium
           </option>
-          <option value="2000">Fast</option>
+          <option value="500">Fast</option>
         </select>
       </div>
     );

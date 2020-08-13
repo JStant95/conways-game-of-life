@@ -7,7 +7,7 @@ class Ticks extends Component {
 
   startTicks = () => {
     clearInterval(this.state.timer);
-    let timerId = setInterval(() => this.props.incrementTicks(), 2000);
+    let timerId = setInterval(() => this.props.incrementTicks(), 1000);
     this.setState({ timer: timerId });
   };
 
@@ -16,7 +16,12 @@ class Ticks extends Component {
     this.props.resetTicks();
   };
 
+  pauseTicks = () => {
+    clearInterval(this.state.timer);
+  };
+
   render() {
+    console.log(this.props.speed);
     return (
       <div>
         <button onClick={this.startTicks}>Start</button>
