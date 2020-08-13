@@ -148,6 +148,13 @@ class Game extends Component {
     });
   };
 
+  resetBoard = () => {
+    let freshBoard = Array(this.rows)
+      .fill()
+      .map(() => Array(this.cols).fill(false));
+    this.setState({ gridFull: freshBoard });
+  };
+
   render() {
     return (
       <div>

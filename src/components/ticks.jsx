@@ -26,7 +26,7 @@ class Ticks extends Component {
       <div>
         <button onClick={this.startTicks}>Start</button>
         <button onClick={this.pauseTicks}>Pause</button>
-        <button onClick={this.stopTicks}>Stop</button>
+        <button onClick={this.stopTicks}>Clear</button>
       </div>
     );
   }
