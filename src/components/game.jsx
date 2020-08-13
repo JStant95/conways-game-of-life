@@ -170,6 +170,7 @@ class Game extends Component {
           speed={this.props.speed}
           incrementTicks={this.incrementTicks}
           resetTicks={this.resetTicks}
+          resetBoard={this.resetBoard}
         />
         <h2>Ticks: {this.state.ticks}</h2>
       </div>

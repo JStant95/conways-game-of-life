@@ -14,6 +14,7 @@ class Ticks extends Component {
   stopTicks = () => {
     clearInterval(this.state.timer);
     this.props.resetTicks();
+    this.props.resetBoard();
   };
 
   pauseTicks = () => {
