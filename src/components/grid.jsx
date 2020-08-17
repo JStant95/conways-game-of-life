@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Cell from "./cell";
-import "../index.css";
+import "../css/index.css";
 
 class Grid extends Component {
   render() {

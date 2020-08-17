@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Grid from "./grid";
 import Ticks from "./ticks";
-import "../index.css";
+import "../css/index.css";
 
 class Game extends Component {
   constructor() {
