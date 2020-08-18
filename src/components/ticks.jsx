@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../css/index.css";
 
 class Ticks extends Component {
   state = {
@@ -25,9 +26,15 @@ class Ticks extends Component {
     console.log(this.props.speed);
     return (
       <div>
-        <button onClick={this.startTicks}>Start</button>
-        <button onClick={this.pauseTicks}>Pause</button>
-        <button onClick={this.stopTicks}>Clear</button>
+        <button className="button1" onClick={this.startTicks}>
+          Start
+        </button>
+        <button className="button1" onClick={this.pauseTicks}>
+          Pause
+        </button>
+        <button className="button1" onClick={this.stopTicks}>
+          Clear
+        </button>
       </div>
     );
   }
