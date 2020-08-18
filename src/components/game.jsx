@@ -157,7 +157,7 @@ class Game extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <h1>Conway's Game of Life</h1>
         <Grid
           gridFull={this.state.gridFull}
