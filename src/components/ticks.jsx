@@ -4,12 +4,14 @@ import "../css/index.css";
 class Ticks extends Component {
   state = {
     timer: "",
+    paused: true,
   };
 
   startTicks = () => {
     clearInterval(this.state.timer);
     let timerId = setInterval(() => this.props.incrementTicks(), 1000);
     this.setState({ timer: timerId });
+    this.setState({ paused: false });
   };
 
   stopTicks = () => {
@@ -20,18 +22,22 @@ class Ticks extends Component {
 
   pauseTicks = () => {
     clearInterval(this.state.timer);
+    this.setState({ paused: true });
   };
 
   render() {
-    console.log(this.props.speed);
     return (
       <div>
-        <button className="button1" onClick={this.startTicks}>
-          Start
-        </button>
-        <button className="button1" onClick={this.pauseTicks}>
-          Pause
-        </button>
+        {this.state.paused && (
+          <button className="button1" onClick={this.startTicks}>
+            Start
+          </button>
+        )}
+        {!this.state.paused && (
+          <button className="button1" onClick={this.pauseTicks}>
+            Pause
+          </button>
+        )}
         <button className="button1" onClick={this.stopTicks}>
           Clear
         </button>
