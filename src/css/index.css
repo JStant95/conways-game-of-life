@@ -34,9 +34,13 @@
   padding-bottom: 50px;
 }
 
-.container {
+.App {
   background-image: url("https://media.istockphoto.com/vectors/doodle-handdrawn-bacteria-cells-black-white-red-pattern-on-vector-id1175078735?k=6&m=1175078735&s=170667a&w=0&h=izERBhGYMfcuQ47B1MILw6nMhBW23tlD_0G66INjKfI=");
-  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .button1 {
