@@ -158,7 +158,7 @@ class Game extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Conway's Game of Life</h1>
+        <h1 className="title">Conway's Game of Life</h1>
         <Grid
           gridFull={this.state.gridFull}
           rows={this.rows}
@@ -171,7 +171,7 @@ class Game extends Component {
           resetTicks={this.resetTicks}
           resetBoard={this.resetBoard}
         />
-        <h2>Ticks: {this.state.ticks}</h2>
+        <h2 className="title">Ticks: {this.state.ticks}</h2>
       </div>
     );
   }
